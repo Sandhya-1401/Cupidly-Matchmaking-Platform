@@ -1,0 +1,112 @@
+/* Full screen background */
+.auth-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("/bg/a2.jpeg") center/cover no-repeat;
+  overflow: hidden;
+}
+
+/* Subtle blurred background overlay */
+.auth-overlay {
+  position: absolute;
+  inset: 0;
+
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* Glassmorphism Auth Card */
+.auth-card {
+  position: relative;
+  z-index: 10;
+  width: 600px;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+  /* transform: scale(1.02) rotateX(2deg) rotateY(-2deg); */
+  box-shadow: 0 12px 40px rgba(255, 105, 180, 0.5);
+}
+
+/* Branding */
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.auth-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.auth-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #db24aa;
+}
+
+.auth-tagline {
+  font-size: 1.2rem;
+  color: #b949df;
+}
+
+/* Title */
+.auth-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #db24aa;
+  margin-bottom: 1.5rem;
+}
+
+/* Toggle */
+.auth-toggle {
+  margin-top: 1.5rem;
+}
+
+.auth-toggle-text {
+  font-size: 1rem;
+  color: #263281;
+}
+
+.auth-toggle-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, #ec4899, #d946ef);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-toggle-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.5);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

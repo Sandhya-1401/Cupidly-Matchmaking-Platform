@@ -1,0 +1,199 @@
+/* ChatPage Styles */
+
+/* General Page Styling */
+.chat-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #145dee; /* light gray background */
+  }
+  
+  .chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    max-width: 50rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+ 
+  
+  /* Match Header Styling */
+  .match-header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  
+  .match-header img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 2px solid #f472b6; /* pink border */
+  }
+  
+  .match-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151; /* dark gray text */
+  }
+  
+  /* Messages Container */
+  .messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  
+  /* Individual Message */
+  .message {
+    margin-bottom: 1rem;
+  }
+  
+  .message.sent {
+    text-align: right;
+  }
+  
+  .message.received {
+    text-align: left;
+  }
+  
+  .message span {
+    display: inline-block;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    max-width: 18rem;
+    font-size: 1rem;
+  }
+  
+  .message.sent span {
+    background-color: #ec4899; /* pink background */
+    color: white;
+  }
+  
+  .message.received span {
+    background-color: #e5e7eb; /* light gray background */
+    color: #374151; /* dark gray text */
+  }
+  
+  /* Match Not Found UI */
+  .match-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+  }
+  
+  .match-not-found .content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .match-not-found h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  
+  .match-not-found p {
+    font-size: 1rem;
+    color: #6b7280; /* light gray */
+  }
+  
+  .match-not-found .link-btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ec4899; /* pink background */
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .match-not-found .link-btn:hover {
+    background-color: #db2777; /* darker pink on hover */
+  }
+  
+  /* Loading UI */
+  .loading-ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+  }
+  
+  .loading-ui .content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .loading-ui h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+  }
+  
+  .loading-ui p {
+    font-size: 1rem;
+    color: #6b7280;
+  }
+  
+  .loading-ui .dots {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .loading-ui .dots div {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #ec4899; /* pink */
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+  }
+  
+  .loading-ui .dots div:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .loading-ui .dots div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .loading-ui .dots div:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  
