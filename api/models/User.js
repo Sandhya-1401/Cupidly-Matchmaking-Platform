@@ -14,7 +14,18 @@ const userSchema = new mongoose.Schema(
 		},
 		password: {
 			type: String,
-			required: true,
+			required: function() {
+				return !this.isGoogleAuth;
+			},
+			select: false,
+		},
+		googleId: {
+			type: String,
+			sparse: true,
+		},
+		isGoogleAuth: {
+			type: Boolean,
+			default: false,
 		},
 		age: {
 			type: Number,
@@ -23,12 +34,12 @@ const userSchema = new mongoose.Schema(
 		gender: {
 			type: String,
 			required: true,
-			enum: ["male", "female"],
+			enum: ["Male", "Female", "Other"],
 		},
 		genderPreference: {
 			type: String,
 			required: true,
-			enum: ["male", "female", "both"],
+			enum: ["Male", "Female", "Both"],
 		},
 		bio: { type: String, default: "" },
 		image: { type: String, default: "" },

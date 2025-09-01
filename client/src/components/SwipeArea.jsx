@@ -10,32 +10,29 @@ const SwipeArea = () => {
 	};
 
 	return (
-		<div className='relative w-full max-w-sm h-[28rem]'>
+		<div className='relative w-full max-w-xs sm:max-w-sm lg:max-w-md h-[24rem] sm:h-[28rem] lg:h-[32rem]'>
 			{userProfiles.map((user) => (
 				<TinderCard
-					className='absolute shadow-none'
+					className='absolute shadow-none touch-target'
 					key={user._id}
 					onSwipe={(dir) => handleSwipe(dir, user)}
 					swipeRequirementType='position'
-					swipeThreshold={100}
+					swipeThreshold={80}
 					preventSwipe={["up", "down"]}
 				>
-					<div
-						className='card bg-white w-96 h-[28rem] select-none rounded-lg overflow-hidden border
-					 border-gray-400'
-					>
-						<figure className='px-4 pt-4 h-3/4'>
+					<div className='card bg-white w-full h-[24rem] sm:h-[28rem] lg:h-[32rem] select-none rounded-lg overflow-hidden border border-gray-300 shadow-lg hover:shadow-xl transition-shadow duration-300'>
+						<figure className='px-3 sm:px-4 pt-3 sm:pt-4 h-3/4'>
 							<img
 								src={user.image || "/avatar.png"}
 								alt={user.name}
-								className='rounded-lg object-cover h-full pointer-events-none'
+								className='rounded-lg object-cover w-full h-full pointer-events-none'
 							/>
 						</figure>
-						<div className='card-body bg-gradient-to-b from-white to-pink-50'>
-							<h2 className='card-title text-2xl text-gray-900'>
+						<div className='card-body bg-gradient-to-b from-white to-pink-50 p-3 sm:p-4'>
+							<h2 className='card-title text-responsive-xl font-bold text-gray-900 truncate'>
 								{user.name}, {user.age}
 							</h2>
-							<p className='text-gray-600'>{user.bio}</p>
+							<p className='text-responsive-sm text-gray-600 line-clamp-2'>{user.bio}</p>
 						</div>
 					</div>
 				</TinderCard>

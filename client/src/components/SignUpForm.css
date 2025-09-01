@@ -1,12 +1,27 @@
 /* Container */
 .signup-container {
   max-width: 620px;
-  margin: 40px auto;
+  margin: 20px auto;
   background: #e0dada;
-  padding: 30px 25px;
+  padding: 20px 15px;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   animation: fadeIn 0.6s ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .signup-container {
+    margin: 40px auto;
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    margin: 10px;
+    padding: 15px 10px;
+    border-radius: 15px;
+  }
 }
 
 /* Title */
@@ -15,6 +30,7 @@
   font-size: 28px;
   font-weight: 700;
   background: linear-gradient(135deg, #ff3366, #a855f7);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 20px;
@@ -37,9 +53,16 @@
   padding: 14px 12px;
   border: 2px solid #c7bac2;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 16px; /* Fixed at 16px to prevent zoom on iOS */
   background: transparent;
   transition: 0.3s;
+  min-height: 44px;
+}
+
+@media (max-width: 480px) {
+  .form-group input {
+    padding: 16px 12px;
+  }
 }
 
 .form-group input:focus {
@@ -87,7 +110,15 @@
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .chips {
+    gap: 10px;
+    justify-content: flex-start;
+  }
 }
 
 /* Chip Style Radio */
@@ -95,14 +126,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border: 2px solid #ae57ac;
   border-radius: 9999px;
-  font-size: 14px;
+  font-size: clamp(0.875rem, 2.5vw, 0.875rem);
   font-weight: 550;
   cursor: pointer;
   transition: all 0.25s ease;
   user-select: none;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+@media (max-width: 480px) {
+  .chip {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
 }
 
 .chip input {

@@ -2,7 +2,13 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .login-form {
+    gap: 1.2rem;
+  }
 }
 
 /* Input Groups */
@@ -26,15 +32,21 @@
 
 .input-field {
   width: 100%;
-  padding: 10px 12px 10px 47px;
-  padding-left: 47px !important; /* space for icon */
+  padding: 12px 12px 12px 45px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid #ddd;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 2.5vw, 0.95rem);
   color: #333;
   transition: 0.2s;
-   /* keeps text above the icon */
+  min-height: 44px; /* Touch-friendly */
+}
+
+@media (max-width: 480px) {
+  .input-field {
+    padding: 14px 12px 14px 42px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
 }
 
 .input-field:focus {
@@ -75,15 +87,24 @@
 
 /* Submit Button */
 .submit-btn {
-  padding: 10px;
+  padding: 12px 14px;
+  font-size: clamp(1rem, 3vw, 1.125rem);
+  font-weight: 600;
   border-radius: 9999px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #fff;
-  background: linear-gradient(135deg, #ec4899, #d946ef);
   border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  touch-action: manipulation;
+  color: #fff;
+  background: linear-gradient(135deg, #ec4899, #d946ef);
+}
+
+@media (max-width: 480px) {
+  .submit-btn {
+    padding: 16px;
+    font-size: 16px;
+  }
 }
 
 .submit-btn:hover {
@@ -136,15 +157,24 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   border: 2px solid #ddd;
   border-radius: 9999px;
   background: #fff;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   color: #444;
   transition: 0.2s;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+@media (max-width: 480px) {
+  .google-btn {
+    padding: 16px;
+    font-size: 16px;
+  }
 }
 .google-btn:hover {
   background: #d5c4da;

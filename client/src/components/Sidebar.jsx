@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Heart, Loader, MessageCircle, X } from "lucide-react";
+import { Heart, Loader, MessageCircle, X, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useMatchStore } from "../store/useMatchStore";
 import "./Sidebar.css"; // ✅ Import styles
@@ -19,25 +19,25 @@ const Sidebar = () => {
 		<>
 			<div
 				className={`
-		fixed inset-y-0 left-0 z-10 w-64 bg-white shadow-md overflow-hidden transition-transform duration-300
+		fixed inset-y-0 left-0 z-50 w-72 sm:w-80 lg:w-64 bg-white shadow-lg overflow-hidden transition-transform duration-300
 		 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:translate-x-0 lg:static lg:w-1/4
+          lg:translate-x-0 lg:static lg:w-1/4 lg:shadow-md
 		`}
 			>
 				<div className='flex flex-col h-full'>
 					{/* Header */}
-					<div className='p-4 pb-[27px] border-b border-pink-200 flex justify-between items-center'>
-						<h2 className='text-xl font-bold text-pink-600'>Your Matches</h2>
+					<div className='p-3 sm:p-4 pb-[27px] border-b border-pink-200 flex justify-between items-center'>
+						<h2 className='text-responsive-lg font-bold text-pink-600'>Your Matches</h2>
 						<button
-							className='lg:hidden p-1 text-gray-500 hover:text-gray-700 focus:outline-none'
+							className='lg:hidden p-2 text-gray-500 hover:text-gray-700 focus:outline-none min-h-[44px] min-w-[44px] touch-target flex items-center justify-center'
 							onClick={toggleSidebar}
 						>
-							<X size={24} />
+							<X size={20} />
 						</button>
 					</div>
 
-					<div className='flex-grow overflow-y-auto p-4 z-10 relative'>
+					<div className='flex-grow overflow-y-auto p-2 sm:p-4 z-10 relative'>
 						{isLoadingMyMatches ? (
 							<LoadingState />
 						) : matches.length === 0 ? (
@@ -45,14 +45,16 @@ const Sidebar = () => {
 						) : (
 							matches.map((match) => (
 								<Link key={match._id} to={`/chat/${match._id}`}>
-									<div className='flex items-center mb-4 cursor-pointer hover:bg-pink-50 p-2 rounded-lg transition-colors duration-300'>
+									<div className='flex items-center mb-3 sm:mb-4 cursor-pointer hover:bg-pink-50 p-2 sm:p-3 rounded-lg transition-colors duration-300 min-h-[60px] touch-target'>
 										<img
 											src={match.image || "/avatar.png"}
-											alt='User avatar'
-											className='size-12 object-cover rounded-full mr-3 border-2 border-pink-300'
+											alt={match.name}
+											className='w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full mr-2 sm:mr-3 border-2 border-pink-200 flex-shrink-0'
 										/>
-
-										<h3 className='font-semibold text-gray-800'>{match.name}</h3>
+										<div className='flex-grow min-w-0'>
+											<h3 className='font-semibold text-gray-800 text-responsive-base truncate'>{match.name}</h3>
+											<p className='text-responsive-sm text-gray-600 truncate'>Start a conversation...</p>
+										</div>
 									</div>
 								</Link>
 							))
@@ -62,10 +64,10 @@ const Sidebar = () => {
 			</div>
 
 			<button
-				className='lg:hidden fixed top-4 left-4 p-2 bg-pink-500 text-white rounded-md z-0'
+				className='lg:hidden fixed top-4 left-4 p-2 bg-pink-500 text-white rounded-md z-40 min-h-[44px] min-w-[44px] touch-target flex items-center justify-center shadow-lg'
 				onClick={toggleSidebar}
 			>
-				<MessageCircle size={24} />
+				<Menu size={20} />
 			</button>
 		</>
 	);

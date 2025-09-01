@@ -37,16 +37,16 @@ const ProfilePage = () => {
 	console.log(image);
 
 	return (
-		<div className='min-h-screen bg-gray-50 flex flex-col'>
+		<div className='min-h-screen min-h-[100dvh] bg-gray-50 flex flex-col'>
 			<Header />
 
-			<div className='flex-grow flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8'>
-				<div className='sm:mx-auto sm:w-full sm:max-w-md'>
-					<h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>Your Profile</h2>
+			<div className='flex-grow flex flex-col justify-center py-6 sm:py-12 px-2 sm:px-4 lg:px-8'>
+				<div className='mx-auto w-full max-w-md sm:max-w-lg'>
+					<h2 className='mt-4 sm:mt-6 text-center text-responsive-2xl font-extrabold text-gray-900'>Your Profile</h2>
 				</div>
 
-				<div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-					<div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-gray-200'>
+				<div className='mt-6 sm:mt-8 mx-auto w-full max-w-md sm:max-w-lg'>
+					<div className='bg-white py-6 sm:py-8 px-3 sm:px-4 lg:px-10 shadow-lg sm:rounded-lg border border-gray-200'>
 						<form onSubmit={handleSubmit} className='space-y-6'>
 							
 							{/* NAME */}
@@ -62,9 +62,7 @@ const ProfilePage = () => {
 										required
 										value={name}
 										onChange={(e) => setName(e.target.value)}
-										className='appearance-none block w-full px-3 py-2 border border-gray-300
-										 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 
-										sm:text-sm'
+										className='appearance-none block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-base min-h-[44px] touch-target'
 									/>
 								</div>
 							</div>
@@ -82,7 +80,7 @@ const ProfilePage = () => {
 										required
 										value={age}
 										onChange={(e) => setAge(e.target.value)}
-										className='appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm'
+										className='appearance-none block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-base min-h-[44px] touch-target'
 									/>
 								</div>
 							</div>
@@ -138,7 +136,7 @@ const ProfilePage = () => {
 										rows={3}
 										value={bio}
 										onChange={(e) => setBio(e.target.value)}
-										className='appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm'
+										className='appearance-none block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-base min-h-[88px] resize-none'
 									/>
 								</div>
 							</div>
@@ -149,7 +147,7 @@ const ProfilePage = () => {
 									<button
 										type='button'
 										onClick={() => fileInputRef.current.click()}
-										className='inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500'
+										className='inline-flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 min-h-[44px] touch-target w-full sm:w-auto'
 									>
 										Upload Image
 									</button>
@@ -171,8 +169,7 @@ const ProfilePage = () => {
 
 							<button
 								type='submit'
-								className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 
-								focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500'
+								className='w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 min-h-[44px] touch-target transition-colors duration-200'
 								disabled={loading}
 							>
 								{loading ? "Saving..." : "Save"}

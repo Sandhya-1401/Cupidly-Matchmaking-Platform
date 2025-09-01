@@ -162,7 +162,6 @@ const AboutPage = () => {
                                         <td className="phone-frame">
                                             <video
                                                 src="/bg/new.mp4"
-                                                autoPlay
                                                 loop
                                                 muted
                                                 playsInline

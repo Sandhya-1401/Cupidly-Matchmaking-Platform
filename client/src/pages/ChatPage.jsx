@@ -40,25 +40,25 @@ const ChatPage = () => {
 	if (!match) return <MatchNotFound />;
 
 	return (
-		<div className='flex flex-col h-screen bg-gradient-to-br from-pink-50 via-white to-pink-100'>
+		<div className='flex flex-col h-screen h-[100dvh] bg-gradient-to-br from-pink-50 via-white to-pink-100'>
 			<Header />
 
 			{/* Chat Header */}
-			<div className='flex items-center p-4 bg-gradient-to-r from-pink-500 to-pink-400 text-white shadow-md sticky top-0 z-10'>
+			<div className='flex items-center p-3 sm:p-4 bg-gradient-to-r from-pink-500 to-pink-400 text-white shadow-md sticky top-0 z-10'>
 				<img
 					src={match.image || "/avatar.png"}
-					className='w-12 h-12 object-cover rounded-full border-2 border-white mr-3'
+					className='w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-full border-2 border-white mr-2 sm:mr-3'
 				/>
 				<div>
-					<h2 className='text-lg font-semibold'>{match.name}</h2>
-					<p className='text-sm flex items-center'>
-						<Circle size={10} className='text-green-400 mr-1' /> Online now
+					<h2 className='text-responsive-lg font-semibold'>{match.name}</h2>
+					<p className='text-responsive-sm flex items-center'>
+						<Circle size={8} className='text-green-400 mr-1' /> Online now
 					</p>
 				</div>
 			</div>
 
 			{/* Chat Messages */}
-			<div className='flex-grow overflow-y-auto p-4 space-y-3 custom-scrollbar'>
+			<div className='flex-grow overflow-y-auto p-2 sm:p-4 space-y-2 sm:space-y-3 custom-scrollbar'>
 				{messages.length === 0 ? (
 					<div className='flex flex-col items-center justify-center h-full text-gray-500'>
 						<Smile size={48} className='text-pink-400 mb-2' />
@@ -82,7 +82,7 @@ const ChatPage = () => {
 								/>
 							)}
 							<div
-								className={`relative p-3 rounded-2xl max-w-xs lg:max-w-md shadow-sm ${
+								className={`relative p-2 sm:p-3 rounded-2xl max-w-[280px] sm:max-w-xs lg:max-w-md shadow-sm ${
 									msg.sender === authUser._id
 										? "bg-gradient-to-r from-pink-500 to-pink-400 text-white rounded-br-none"
 										: "bg-gray-200 text-gray-800 rounded-bl-none"
