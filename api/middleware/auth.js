@@ -12,7 +12,9 @@ export const protectRoute = async (req, res, next) => {
 			});
 		}
 
-		const decoded = jwt.verify(token, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		// Verify JWT using the same secret used to sign tokens
+		const secret = process.env.JWT_SECRET || "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		const decoded = jwt.verify(token, secret);
 
 		if (!decoded) {
 			return res.status(401).json({

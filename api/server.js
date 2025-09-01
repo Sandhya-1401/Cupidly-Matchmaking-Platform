@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
 import { createServer } from "http";
+import session from "express-session";
+import passport from "./config/passport.js";
 
 // routes
 import authRoutes from "./routes/authRoutes.js";
@@ -40,8 +42,27 @@ app.options("*", cors({
     credentials: true
 }));
 
-app.use(express.json());
+// Increase body size limits to handle base64 image uploads
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
+
+// Session (required for passport OAuth)
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "cupidly-dev-session",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false, // set true if behind HTTPS
+      sameSite: "lax",
+    },
+  })
+);
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use("/api/auth", authRoutes);

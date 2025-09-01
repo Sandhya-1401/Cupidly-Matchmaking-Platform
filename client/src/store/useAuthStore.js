@@ -38,7 +38,9 @@ export const useAuthStore = create((set) => ({
 			set({ loading: true });
 			const res = await axiosInstance.post("/auth/login", loginData);
 			set({ authUser: res.data.user });
-			initializeSocket(res.data.user._id);
+			if (res?.data?.user?._id) {
+				initializeSocket(res.data.user._id);
+			}
 			toast.success("Logged in Successfully 😃");
 		} catch (error) {
 			toast.error(error.response.data.message || "Something Went Wrong..Oopss..");
@@ -58,8 +60,11 @@ export const useAuthStore = create((set) => ({
 	checkAuth: async () => {
 		try {
 			const res = await axiosInstance.get("/auth/me");
-			initializeSocket(res.data.user._id);
-			set({ authUser: res.data.user });
+			const user = res?.data?.user || null;
+			if (user?._id) {
+				initializeSocket(user._id);
+			}
+			set({ authUser: user });
 		} catch (error) {
 			set({ authUser: null });
 			console.log(error);

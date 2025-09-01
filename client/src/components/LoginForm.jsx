@@ -83,6 +83,13 @@ const LoginForm = () => {
 
   const { login, loading } = useAuthStore();
 
+  // Redirect to backend Google OAuth route
+  const handleGoogleLogin = () => {
+    const base = import.meta.env.VITE_API_URL; // e.g., http://localhost:4000/api
+    const url = `${base}/auth/google`;
+    window.location.href = url;
+  };
+
   return (
     <form
       className="login-form"
@@ -148,7 +155,7 @@ const LoginForm = () => {
       </div>
 
       {/* Google Button */}
-      <button type="button" className="google-btn">
+      <button type="button" className="google-btn" onClick={handleGoogleLogin}>
         <img src="/bg/google.png" alt="Google" />
         Continue with Google
       </button>

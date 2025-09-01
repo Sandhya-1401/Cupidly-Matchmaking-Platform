@@ -47,9 +47,8 @@ export const initializeSocket = (userId) => {
 };
 
 export const getSocket = () => {
-  if (!socket) {
-    throw new Error("Socket not initialized");
-  }
+  // Return null if socket isn't ready yet; callers should handle this gracefully
+  if (!socket) return null;
   return socket;
 };
 

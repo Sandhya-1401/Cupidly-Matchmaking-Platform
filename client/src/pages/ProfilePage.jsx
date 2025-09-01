@@ -9,8 +9,8 @@ const ProfilePage = () => {
 	const [name, setName] = useState(authUser.name || "");
 	const [bio, setBio] = useState(authUser.bio || "");
 	const [age, setAge] = useState(authUser.age || "");
-	const [gender, setGender] = useState(authUser.gender || "");
-	const [genderPreference, setGenderPreference] = useState(authUser.genderPreference || []);
+	const [gender, setGender] = useState((authUser.gender || "").toLowerCase());
+	const [genderPreference, setGenderPreference] = useState((authUser.genderPreference || "").toLowerCase());
 	const [image, setImage] = useState(authUser.image || null);
 
 	const fileInputRef = useRef(null);
@@ -89,17 +89,17 @@ const ProfilePage = () => {
 							<div>
 								<span className='block text-sm font-medium text-gray-700 mb-2'>Gender</span>
 								<div className='flex space-x-4'>
-									{["Male", "Female"].map((option) => (
+									{["male", "female", "other"].map((option) => (
 										<label key={option} className='inline-flex items-center'>
 											<input
 												type='radio'
 												className='form-radio text-pink-600'
 												name='gender'
-												value={option.toLowerCase()}
-												checked={gender === option.toLowerCase()}
-												onChange={() => setGender(option.toLowerCase())}
+												value={option}
+												checked={gender === option}
+												onChange={(e) => setGender(e.target.value)}
 											/>
-											<span className='ml-2'>{option}</span>
+											<span className='ml-2'>{option.charAt(0).toUpperCase() + option.slice(1)}</span>
 										</label>
 									))}
 								</div>
@@ -109,15 +109,17 @@ const ProfilePage = () => {
 							<div>
 								<span className='block text-sm font-medium text-gray-700 mb-2'>Gender Preference</span>
 								<div className='flex space-x-4'>
-									{["Male", "Female", "Both"].map((option) => (
+									{["male", "female", "both"].map((option) => (
 										<label key={option} className='inline-flex items-center'>
 											<input
-												type='checkbox'
-												className='form-checkbox text-pink-600'
-												checked={genderPreference.toLowerCase() === option.toLowerCase()}
-												onChange={() => setGenderPreference(option.toLowerCase())}
+												type='radio'
+												className='form-radio text-pink-600'
+												name='genderPreference'
+												value={option}
+												checked={genderPreference === option}
+												onChange={(e) => setGenderPreference(e.target.value)}
 											/>
-											<span className='ml-2'>{option}</span>
+											<span className='ml-2'>{option.charAt(0).toUpperCase() + option.slice(1)}</span>
 										</label>
 									))}
 								</div>

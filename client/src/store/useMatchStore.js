@@ -63,6 +63,7 @@ export const useMatchStore = create((set) => ({
 	subscribeToNewMatches: () => {
 		try {
 			const socket = getSocket();
+			if (!socket) return; // socket not ready yet
 
 			socket.on("newMatch", (newMatch) => {
 				set((state) => ({
@@ -78,6 +79,7 @@ export const useMatchStore = create((set) => ({
 	unsubscribeFromNewMatches: () => {
 		try {
 			const socket = getSocket();
+			if (!socket) return; // nothing to unsubscribe
 			socket.off("newMatch");
 		} catch (error) {
 			console.error(error);
