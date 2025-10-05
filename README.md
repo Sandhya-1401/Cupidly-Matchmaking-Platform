@@ -1,1 +1,1 @@
-Cupidly - Matchmaking Platform
+# **Cupidly - Matchmaking Platform**
